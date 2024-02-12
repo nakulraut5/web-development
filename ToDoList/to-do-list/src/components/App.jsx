@@ -1,7 +1,6 @@
 import React,{useState} from "react"
 import Input from "./Input"
 import TaskList from "./TaskList";
-
 function App(){
     const [AllItems, setAllItems]=useState(["This is demo Item"]);
     function addItem(newText){
@@ -9,7 +8,7 @@ function App(){
             return [...preValue,newText]
         });
     }
-    return <div>
+    return <div className="container">
         <h1>To Do List</h1>
         <Input
             onAdd={addItem}
