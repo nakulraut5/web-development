@@ -1,0 +1,1 @@
+this is a chatbot application using simple react component and some react syntax shortcut like guard
