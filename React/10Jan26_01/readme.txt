@@ -1,0 +1,1 @@
+use of state and event and event handler and react shortcuts to make app interactive
