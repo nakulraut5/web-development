@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app-container"></div>
+    <!-- React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <!-- Babel to support JSX directly in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function PrintButton({count,setCount}) {
+
+            function updateButton() {
+                console.log("Button clicked");
+                setCount(count + 1);
+            }
+            if (count > 1) {
+                return (
+                    <>
+                        <button onClick={updateButton}
+                            value={count}
+                        >Clicked {count} times</button>
+                    </>
+                );
+            }
+            return (
+                <>
+                    {count > 1 ? <button onClick={updateButton}
+                        value={count}
+                    >Clicked {count} times</button> : <button onClick={updateButton}
+                        value={count}
+                    >Clicked {count} time</button>}
+                </>
+            );
+        }
+        function App() {
+            const [count, setCount] = React.useState(0);
+            function resetButtons(){
+                console.log("Button Clicked");
+                setCount(0);
+            }
+            return (
+                <>
+                    <PrintButton
+                        count={count}
+                        setCount={setCount} />
+                    <PrintButton
+                        count={count}
+                        setCount={setCount} />
+                    <button onClick={resetButtons}>Reset</button>
+                </>
+            );
+
+        }
+        const root = ReactDOM.createRoot(document.getElementById('app-container'));
+        root.render(
+            <App />);
+    </script>
+
+</body>
+
+</html>

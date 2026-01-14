@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app-container"></div>
+    <!-- React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <!-- Babel to support JSX directly in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        function App() {
+            const [typedText, setTypedText] = React.useState('');
+            const [printedText, setPrintedText] = React.useState('');
+
+            const handleChange = (e) => setTypedText(e.target.value);
+            const handleReset = () => setTypedText('');
+            const handlePrint = () => setPrintedText(typedText);
+
+            return (
+                <>
+                    <input
+                        type="text"
+                        value={typedText}
+                        onChange={handleChange}
+                        placeholder="Enter text"
+                    />
+                    <button onClick={handleReset}>Reset</button>
+                    <button onClick={handlePrint}>Example</button>
+                    <p>Hello {printedText}</p>
+                </>
+            );
+        }
+        const root = ReactDOM.createRoot(document.getElementById('app-container'));
+        root.render(
+            <App />);
+    </script>
+</body>
+
+</html>
