@@ -1,0 +1,1 @@
+Create a proper react project and practice states 
